@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { DocumentDefinition, Types } from 'mongoose';
 import { UploadedFile } from 'express-fileupload';
 import fs from 'fs'
+import path from 'path'
 
 import FoodItemService from '../services/food.item.service';
 import { IFoodItem } from '../models/types/food.item.type';
@@ -24,8 +25,8 @@ class FoodSectionController {
 
         const [foodItemData] = await this.FoodItemService.findById(id)
         if(!foodItemData) return res.status(404).json({message: `Food item with such id ${id} - not found`})
-
-        fs.stat(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${foodItemData.image}`, err => {
+        const imgPath = path.resolve(__dirname, '../../../client/public/images', foodItemData.image)
+        fs.stat(imgPath, err => {
         // check file before delete whether it exist or not
             if (err) {
                 return res.status(404).json({message: 'File name or path is incorrect'})
@@ -34,7 +35,7 @@ class FoodSectionController {
         
         await this.FoodItemService.deleteById(id)
         
-        fs.unlink(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${foodItemData.image}`, err => {
+        fs.unlink(imgPath, err => {
             if (err) {
                 return res.status(500).json(err)
             }
@@ -73,7 +74,8 @@ class FoodSectionController {
     
         await this.FoodItemService.create({...req.body, image: imageFile.name})
 
-        imageFile.mv(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${imageFile.name}`, err => {
+        const imgPath = path.resolve(__dirname, '../../../client/public/images/', imageFile.name)
+        imageFile.mv(imgPath, err => {
             if (err) {
                 return res.status(500).json(err)
             }
@@ -100,20 +102,20 @@ class FoodSectionController {
             const imageFile: UploadedFile = file as UploadedFile
 
             imageFile.name = encodeURI(imageFile.name.replace(/\s/g, ''))
-
-            fs.stat(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${image}`, err => {
+            const rootPath = path.resolve(__dirname, '../../../client/public/images/')
+            fs.stat(path.resolve(rootPath, image as string), err => {
                 if (err) {
                     return res.status(404).json({message: 'File name or path is incorrect'})
                 }
             })
 
-            fs.unlink(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${image}`, err => {
+            fs.unlink(path.resolve(rootPath, image as string), err => {
                 if (err) {
                     return res.status(500).json(err)
                 }
             })
 
-            imageFile.mv(`${__dirname}\\..\\..\\..\\food-shop-frontend\\public\\images\\${imageFile.name}`, err => {
+            imageFile.mv(path.resolve(rootPath, imageFile.name), err => {
                 if (err) {
                     return res.status(500).json(err)
                 }
