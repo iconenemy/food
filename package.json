@@ -4,12 +4,10 @@
   "author": "iconenemy <iconenemy@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "18.x",
-    "yarn": "1.x",
-    "tsc": "4.x"
+    "node": "19.x",
+    "yarn": "1.x"
   },
   "scripts": {
-    "install": "node installer.js",
     "client:dev": "cd client && yarn start",
     "server:dev": "cd server && yarn start",
     "dev": "concurrently \"yarn client:dev\" \"yarn server:dev\"",
