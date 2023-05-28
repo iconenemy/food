@@ -9,6 +9,7 @@
     "tsc": "4.x"
   },
   "scripts": {
+    "install": "node installer.js",
     "client:dev": "cd client && yarn start",
     "server:dev": "cd server && yarn start",
     "dev": "concurrently \"yarn client:dev\" \"yarn server:dev\"",
@@ -17,6 +18,8 @@
     "heroku-postbuild": "concurrently \"yarn server:build\" \"yarn client:build\""
   },
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "typescript": "^4.8.4",
+    "serve": "^14.2.0"
   }
 }
