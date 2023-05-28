@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "author": "iconenemy <iconenemy@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.x",
+    "tsc": "4.x"
+  },
   "scripts": {
     "client:dev": "cd client && yarn start",
     "server:dev": "cd server && yarn start",
