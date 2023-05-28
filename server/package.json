@@ -5,10 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "cd src && ts-node-dev --respawn --transpile-only app.ts",
-    "build": "tsc -p .",
-    "rebuild": "yarn && rimraf build && yarn build && yarn prod",
-    "prod": "ts-node build/app.js",
-    "swagger-autogen": "ts-node swagger.ts"
+    "swagger-autogen": "ts-node swagger.ts",
+    "build": "yarn && rimraf build && tsc -p ."
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

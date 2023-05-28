@@ -26,10 +26,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn && rimraf build && react-scripts build && serve -s build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "rebuild": "yarn && rimraf build && yarn build && serve -s build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
