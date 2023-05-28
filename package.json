@@ -12,8 +12,8 @@
     "client:dev": "cd client && yarn start",
     "server:dev": "cd server && yarn start",
     "dev": "concurrently \"yarn client:dev\" \"yarn server:dev\"",
-    "client:build": "cd client && yarn && yarn rebuild",
-    "server:build": "cd server && yarn && yarn rebuild",
+    "client:build": "cd client && yarn && yarn build",
+    "server:build": "cd server && yarn && yarn build",
     "heroku-postbuild": "concurrently \"yarn server:build\" \"yarn client:build\""
   },
   "devDependencies": {
