@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rebuild": "yarn && rimraf build && yarn build && serve -s build"
   },
   "eslintConfig": {
     "extends": [

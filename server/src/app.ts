@@ -15,16 +15,6 @@ const PORT = process.env.PORT
 const app = express()
 const router = new AppRouter(app)
 
-// Deployment
-// if (process.env.NODE_MODE === 'production') {
-//     app.use(express.static(path.resolve(__dirname, '../../client/build'), { index: false}))
-//     app.get('/*', (req: Request, res: Response) => {
-//         res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'))
-//     })
-// } 
-
-
-
 // Express configuration
 app.use(express.json())
 app.use(cookieParser())
