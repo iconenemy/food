@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "cd src && ts-node-dev --respawn --transpile-only app.ts",
-    "build": "",
+    "build": "tsc -p .",
+  
+    "prod": "ts-node build/app.js",
     "swagger-autogen": "ts-node swagger.ts"
   },
   "dependencies": {

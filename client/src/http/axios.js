@@ -5,6 +5,11 @@ export const API_URL = "http://localhost:5000/api";
 const $api = axios.create({
   withCredentials: true,
   baseURL: API_URL,
+  // proxy: {
+  //   protocol: 'http',
+  //   host: 'localhost',
+  //   port: 3000,
+  // }
 });
 
 $api.interceptors.request.use((config) => {

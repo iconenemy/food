@@ -18,6 +18,7 @@ const MenuButtons = memo(() => {
 
   const getSectionList = useCallback(async () => {
     const response = await FoodService.getAllFoodSection();
+    console.log('response:', response);
     setSections(
       response.data.list.filter(({ is_available }) => is_available === true)
     );

@@ -109,7 +109,6 @@ class AuthController {
     }
 
     async refresh (req: Request, res: Response) {
-
         const { refresh_token } = req.cookies
         if (refresh_token === null) return res.status(405).json('No token provided') 
             
